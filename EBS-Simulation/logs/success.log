@@ -1,0 +1,23 @@
+2025-04-20 14:16:19 - SUCCESS: /dev/sdd partition created of size 20480
+2025-04-20 14:16:58 - SUCCESS: /dev/sdd1 formated at filesys ext4
+2025-04-20 14:16:58 - SUCCESS: Partition /dev/sdd1 created and mounted at /AWS
+2025-05-03 18:24:09 - SUCCESS: /dev/sdd partition created of size 20480
+2025-05-03 18:50:28 - SUCCESS: /dev/sdd partition created of size 20480
+2025-05-03 18:50:30 - SUCCESS: Partition /dev/sdd1 created and mounted at /mnt/data
+2025-05-03 18:51:54 - SUCCESS: /dev/sdd partition created of size 20480
+2025-05-03 18:51:58 - SUCCESS: Partition /dev/sdd1 created and mounted at /mnt/data
+2025-05-03 19:02:40 - SUCCESS: /dev/sdd partition created of size 20480
+2025-05-03 19:02:42 - SUCCESS: /dev/sdd1 formated at filesys xfs
+2025-05-03 19:02:43 - SUCCESS: Partition /dev/sdd1 created and mounted at /mnt/data
+2025-05-03 19:05:33 - SUCCESS: /dev/sdd partition created of size 20480
+2025-05-03 19:05:36 - SUCCESS: /dev/sdd1 formated at filesys ext4
+2025-05-03 19:05:36 - SUCCESS: Partition /dev/sdd1 created and mounted at /mnt/data
+2025-05-03 19:07:38 - SUCCESS: /dev/sdd partition created of size 20480
+2025-05-03 19:07:39 - SUCCESS: /dev/sdd1 already formatted with ext4. Skipping mkfs.
+2025-05-03 19:07:40 - SUCCESS: Partition /dev/sdd1 created and mounted at /mnt/data
+2025-05-03 19:32:48 - SUCCESS: /dev/sdc partition created of size 5118
+2025-05-03 19:32:49 - SUCCESS: /dev/sdc1 already formatted with ext4. Skipping mkfs.
+2025-05-03 19:41:46 - SUCCESS: /dev/sdc partition created of size 5118
+2025-05-03 19:41:48 - SUCCESS: /dev/sdc1 formated at filesys ext4
+2025-05-03 20:11:19 - SUCCESS: /dev/sdc partition created of size 5118
+2025-05-03 20:11:21 - SUCCESS: /dev/sdc1 formated at filesys ext4

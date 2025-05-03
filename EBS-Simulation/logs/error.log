@@ -1,0 +1,7 @@
+2025-04-20 14:10:46 - ERROR: Usage- ./partdisk.sh <disk_path> <partition_size> <format_type> <mount_directory>
+2025-05-03 18:24:10 - ERROR: /dev/sdd1 already formatted with ext4. Skipping mkfs.
+2025-05-03 18:48:11 - ERROR: Not enough free space. Requested: 20480 MiB, Available: 10239 MiB.
+2025-05-03 18:48:12 - ERROR: Please run 'vagrant halt', increase the disk size in VirtualBox settings, then 'vagrant up' again and re-run this script.\nIf you want to resize the existing partition, re-run the script like: RESIZE_EXISTING=true ./partdisk.sh <disk> 0 <format> <mountpoint>.\nIf not, simply re-run: ./partdisk.sh <disk> <partition_size> <format> <mountpoint>.
+2025-05-03 18:50:30 - ERROR: /dev/sdd1 already formatted with ext4. Skipping mkfs.
+2025-05-03 18:51:58 - ERROR: /dev/sdd1 already formatted with ext4. Skipping mkfs.
+2025-05-03 20:11:21 - ERROR: Mul Vols ( /dev/sdd1, /dev/sdc1 ) cant have same mount point i.e /mnt/data
