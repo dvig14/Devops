@@ -13,6 +13,7 @@ Feel free to contribute by improving documentation or enhancing the infrastructu
 
 # How to contribute 
 
+```bash
 git clone https://github.com/dvig14/Devops.git
 cd Terraform 
-
+```
