@@ -1,0 +1,17 @@
+require 'json'
+vms = JSON.parse('[{"ip":"192.168.56.11","memory":1024,"name":"app","path":"./../provision/setup-nginx.sh"},{"ip":"192.168.56.13","memory":2048,"name":"jenkins","path":"./../provision/install-jenkins.sh"}]')
+
+Vagrant.configure("2") do |config|
+  vms.each do |vm| 
+    config.vm.define vm["name"] do |vm_config|
+      vm_config.vm.box = "ubuntu/jammy64" 
+      vm_config.vm.hostname = vm["name"] 
+      vm_config.vm.network "private_network", ip: vm["ip"] 
+      vm_config.vm.provider "virtualbox" do |vb|
+        vb.memory = vm["memory"]
+        vb.cpus = 1 
+      end
+      vm_config.vm.provision "shell" , path: vm["path"]
+    end
+  end 
+end
