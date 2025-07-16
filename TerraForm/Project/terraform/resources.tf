@@ -11,7 +11,8 @@ resource "local_file" "vagrantfile" {
   filename = "${path.module}/../output/Vagrantfile"
 }
 
-resource "null_resource" "vagrant_up" {
+
+resource "null_resource" "vagrant_op" {
   # First ensure vagrantfile is created as resources not linked 
   depends_on = [local_file.vagrantfile]
 
@@ -26,17 +27,13 @@ resource "null_resource" "vagrant_up" {
   }
 }
 
+
 resource "null_resource" "vagrant_destroy" {
-    
-  depends_on = [null_resource.vagrant_up]
+  depends_on = [null_resource.vagrant_op]
 
   provisioner "local-exec" {
     when = destroy
-    command = "vagrant destroy ${var.vm_name != "" ? var.vm_name : ""} -f"
+    command = "vagrant destroy -f"
     working_dir = "${path.module}/../output" 
-  }
-
-  triggers = {
-    vm_name  = var.vm_name
   }
 }

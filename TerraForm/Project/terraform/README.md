@@ -91,7 +91,7 @@ resource "local_file" "vagrantfile" {
 ### 2. 🔃 **Provision VMs (`up`, `halt`, etc.) using `null_resource` + `local-exec`**
 
 ```hcl
-resource "null_resource" "vagrant_up" {
+resource "null_resource" "vagrant_op" {
   depends_on = [local_file.vagrantfile]
 
   provisioner "local-exec" {
@@ -122,25 +122,81 @@ resource "null_resource" "vagrant_up" {
 
 ```hcl
 resource "null_resource" "vagrant_destroy" {
-  depends_on = [null_resource.vagrant_up]
+  depends_on = [null_resource.vagrant_op]
 
   provisioner "local-exec" {
     when        = destroy
-    command     = "vagrant destroy ${var.vm_name != "" ? var.vm_name : ""} -f"
+    command     = "vagrant destroy -f"
     working_dir = "${path.module}/../output"
   }
 
-  triggers = {
-    vm_name = var.vm_name
-  }
 }
 ```
 
-* **`when = destroy`** ensures this only runs during `terraform destroy` as provisioners run only during creation.
-* **Destroy all or specific VM:**
+<details>
+<summary>⚠️ Why NOT use variables ,for_each here?</summary>
 
-  * `terraform destroy` → `vagrant destroy -f`
-  * `terraform destroy -var="vm_name=jenkins"` → `vagrant destroy jenkins -f`
+#### 💡 Explanation:
+
+| Concept             | Why It's Done                                                                 |
+| ------------------- | ----------------------------------------------------------------------------- |
+| `when = destroy`    | Ensures the command runs only on `terraform destroy`                          |
+| No `variables` used | `terraform destroy` does **not support `var.*`** because inputs may not exist |
+| No `for_each` used  | To **avoid race conditions** (e.g. multiple `vagrant destroy` on same folder) |
+| `depends_on` used   | Ensures destroy only runs **after** `vagrant up/halt` execution finishes      |
+
+---
+
+#### 🛑 Why no `for_each`?
+
+Using `for_each` like this:
+
+```hcl
+resource "null_resource" "vagrant_destroy" {
+  for_each = { for vm in var.vms : vm.name => vm }
+  ...
+}
+```
+
+Causes **multiple parallel destroy operations**, which can lead to:
+
+* Conflicts in `.vagrant/` shared folder
+* Duplicate `vagrant destroy` calls (one per VM)
+* Unpredictable failures
+
+---
+
+#### ⚠️ Why avoid `-target` in production?
+
+`terraform destroy -target=null_resource.vagrant_destroy["jenkins"]`
+
+* ✅ Can work for dev/testing
+* ❌ **Not safe** in production:
+
+  * It skips dependency graph
+  * May leave orphaned or broken infra
+  * Doesn’t respect full lifecycle
+
+---
+
+#### ✅ Real-world practice:
+
+In production, people:
+
+* Use **modular design** (1 folder/module per VM)
+* CD into that VM’s directory
+* Run `terraform destroy` inside it for isolated cleanup
+
+Example:
+
+```
+cd terraform/app-vm/
+terraform destroy
+```
+
+This avoids race conditions and respects dependencies properly.
+
+</details>
 
 ---
 
@@ -170,8 +226,7 @@ variable "vm_name" {
 | Halt all VMs                    | `terraform apply -var="vm_state=halt"`                    |
 | Halt specific VM (`app`)        | `terraform apply -var="vm_state=halt" -var="vm_name=app"` |
 | Bring up specific VM (`app`)    | `terraform apply -var="vm_state=up" -var="vm_name=app"`   |
-| Destroy all VMs                 | `terraform destroy`                                       |
-| Destroy specific VM (`jenkins`) | `terraform destroy -var="vm_name=jenkins"`                |
+| Destroy all VMs + resources     | `terraform destroy`                                       |                
 
 ---
 
