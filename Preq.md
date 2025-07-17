@@ -11,6 +11,8 @@ choco install virtualbox --version=7.1.4 -y
 choco install vagrant --version=2.4.3 -y
 ```
 
+<br>
+
 # MacOS Tools
 
 Install brew from the instructions given in the link below.
@@ -47,6 +49,8 @@ brew install --cask vagrant
 ```
 brew install --cask vagrant-manager
 ```
+
+<br>
 
 # Linux
 
