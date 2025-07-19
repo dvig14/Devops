@@ -70,7 +70,7 @@ Let’s simulate what happens when it’s **deleted**.
 
 ### 🔬 Steps to Break It
 
-1. **Assumption:** You’ve already started the MinIO server, created the S3 bucket, and initialized Terraform.
+**1. Assumption:** You’ve already started the MinIO server, created the S3 bucket, and initialized Terraform.
 
    - This provisions your VM and stores state in MinIO.
    - Terraform tracks all resources.
