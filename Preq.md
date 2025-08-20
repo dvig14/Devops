@@ -91,8 +91,8 @@ sudo dnf install vagrant -y
 - Open Terminal and Execute below mentioned commands.
 
 ```
-sudo apt update
-sudo apt install curl wget gnupg2 lsb-release -y
+sudo apt-get update
+sudo apt-get install gnupg2 lsb-release -y
 ```
 ```
 curl -fsSL https://www.virtualbox.org/download/oracle_vbox_2016.asc|sudo \
@@ -110,9 +110,9 @@ contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
 ```
 
 ```
-sudo apt update
-sudo apt install -y linux-headers-$(uname -r) dkms
-sudo apt install virtualbox-7.1 -y
+sudo apt-get update
+sudo apt-get install -y linux-headers-$(uname -r) dkms
+sudo apt-get install virtualbox-7.1 -y
 sudo usermod -aG vboxusers $USER
 newgrp vboxusers
 ```
@@ -131,7 +131,7 @@ https://apt.releases.hashicorp.com jammy main" | sudo tee \
 /etc/apt/sources.list.d/hashicorp.list
 ```
 ```
-sudo apt update 
-sudo apt install vagrant -y
-sudo apt install libarchive-dev libarchive-tools -y
+sudo apt-get update 
+sudo apt-get install vagrant -y
+sudo apt-get install libarchive-dev libarchive-tools -y
 ```
