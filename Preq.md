@@ -135,3 +135,7 @@ sudo apt-get update
 sudo apt-get install vagrant -y
 sudo apt-get install libarchive-dev libarchive-tools -y
 ```
+```
+vboxmanage --version   # should show VirtualBox version (e.g., 7.1.x)
+vagrant --version      # should show Vagrant version (e.g., 2.4.x)
+```
