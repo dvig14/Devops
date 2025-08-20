@@ -105,7 +105,7 @@ curl -fsSL https://www.virtualbox.org/download/oracle_vbox.asc|sudo gpg
 
 ```
 $ echo "deb [arch=amd64]
-http://download.virtualbox.org/virtualbox/debian $(lsb_release -sc)
+http://download.virtualbox.org/virtualbox/debian jammy
 contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
 ```
 
@@ -127,7 +127,7 @@ tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
 ```
 ``` 
 echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg]
-https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee
+https://apt.releases.hashicorp.com jammy main" | sudo tee
 /etc/apt/sources.list.d/hashicorp.list
 ```
 ```
