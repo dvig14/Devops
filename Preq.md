@@ -104,7 +104,7 @@ curl -fsSL https://www.virtualbox.org/download/oracle_vbox.asc|sudo gpg
 ```
 
 ```
-$ echo "deb [arch=amd64]
+echo "deb [arch=amd64]
 http://download.virtualbox.org/virtualbox/debian jammy
 contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
 ```
