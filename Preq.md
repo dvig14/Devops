@@ -5,10 +5,10 @@ Install chocolatey from the instructions given in the link below.
 https://chocolatey.org/docs/installation
 
 ```
-choco install virtualbox --version=7.1.4 -y
+choco install virtualbox --version=7.2.0 -y
 ```
 ```
-choco install vagrant --version=2.4.3 -y
+choco install vagrant --version=2.4.9 -y
 ```
 
 <br>
@@ -70,7 +70,7 @@ sudo reboot
 
 ```
 sudo wget http://download.virtualbox.org/virtualbox/rpm/el/virtualbox.repo -P /etc/yum.repos.d
-sudo yum install VirtualBox-7.1 -y
+sudo yum install VirtualBox-7.2 -y
 ```
 
 **Installing Vagrant**
@@ -112,7 +112,7 @@ contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
 ```
 sudo apt-get update
 sudo apt-get install -y linux-headers-$(uname -r) dkms
-sudo apt-get install virtualbox-7.1 -y
+sudo apt-get install virtualbox-7.2 -y
 sudo usermod -aG vboxusers $USER
 newgrp vboxusers
 ```
@@ -136,6 +136,6 @@ sudo apt-get install vagrant -y
 sudo apt-get install libarchive-dev libarchive-tools -y
 ```
 ```
-vboxmanage --version   # should show VirtualBox version (e.g., 7.1.x)
+vboxmanage --version   # should show VirtualBox version (e.g., 7.2.x)
 vagrant --version      # should show Vagrant version (e.g., 2.4.x)
 ```
